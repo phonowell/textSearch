@@ -37,3 +37,6 @@ do ($ = jQuery) ->
 
     #callback
     callback?()
+
+    #return
+    @
