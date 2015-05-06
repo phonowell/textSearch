@@ -16,7 +16,7 @@ clean = require 'gulp-clean'
 ignore = require 'gulp-ignore'
 concat = require 'gulp-concat'
 rename = require 'gulp-rename'
-cb = require 'gulp-callback'
+next = require 'gulp-callback'
 
 #type
 jade = require 'gulp-jade'
@@ -60,6 +60,7 @@ base = process.cwd()
 
 #path
 path =
+  gulp: 'gulpfile.coffee'
   source: './source/'
   build: './build/'
 path.jade = parsePath path.source + '**/*.jade'
@@ -82,11 +83,11 @@ gulp.task 'watch', ->
   .pipe lint.reporter()
   #coffee
   .pipe coffee()
-  .pipe gulp.dest './build/'
+  .pipe gulp.dest path.build
   #uglify
   .pipe uglify()
   .pipe rename suffix: '.min'
-  .pipe gulp.dest './build'
+  .pipe gulp.dest path.build
 
 #lint
 gulp.task 'lint', ->
@@ -97,26 +98,37 @@ gulp.task 'lint', ->
 #build
 gulp.task 'build', ->
 
-  #clean
-  gulp.src path.build
-  .pipe clean()
-  .pipe cb ->
+  #
+  gulp.src path.gulp
+  .pipe gulp.dest path.build
+  .pipe next ->
 
-    #coffee
-    gulp.src path.coffee
-    .pipe plumber()
-    #lint
-    .pipe lint()
-    .pipe lint.reporter()
-    #coffee
-    .pipe coffee()
-    .pipe gulp.dest './build/'
-    #uglify
-    .pipe uglify()
-    .pipe rename suffix: '.min'
-    .pipe gulp.dest './build'
+    #clean
+    gulp.src path.build
+    .pipe clean()
+    .pipe next ->
+
+      #coffee
+      gulp.src path.coffee
+      .pipe plumber()
+      #lint
+      .pipe lint()
+      .pipe lint.reporter()
+      #coffee
+      .pipe coffee()
+      .pipe gulp.dest path.build
+      #uglify
+      .pipe uglify()
+      .pipe rename suffix: '.min'
+      .pipe gulp.dest path.build
 
 #clean
 gulp.task 'clean', ->
+
+  #remove ./build
+  gulp.src path.build
+  .pipe clean()
+
+  #clear *.min.min.js
   gulp.src parsePath path.source + '**/*.min.min.js'
   .pipe clean()
