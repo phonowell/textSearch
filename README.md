@@ -1,15 +1,16 @@
-# jquery.textSearch
+# cloud-clothing
 
 ---
 
-## 简介
+## 更新日志：
 
-源码参照 http://www.zhangxinxu.com/wordpress/?p=888
+### 0.0.2 @ 2015.4.14
+- 修改导航栏定位为fixed。
 
-在实际项目应用中遭遇了一些小bug，就重写了一个较为简便的版本。
+### 0.0.1 @ 2015.4.1
+- 初版。
 
-## 使用
+---
 
-```
-($ '#elem').textSearch 'balabala'
-```
+## 近期计划：
+- 无。
