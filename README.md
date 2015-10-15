@@ -8,7 +8,7 @@
 - removed some useless files.
 - script updated.
 
-### 0.0.2 @ 5/7/2015
+### 0.0.2 @ 05/07/2015
 - added readme.md.
 
 ---
