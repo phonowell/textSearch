@@ -2,12 +2,16 @@
 
 ---
 
-## 更新日志：
+## Update
 
-### 0.0.2 @ 2015.5.7
-- 创建readme.md。
+### 0.0.3 @ 10.15.2015
+- removed some useless files.
+- script updated.
+
+### 0.0.2 @ 5.7.2015
+- added readme.md.
 
 ---
 
-## 近期计划：
-- 无。
+## Todo
+- None.

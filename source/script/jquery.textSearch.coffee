@@ -1,23 +1,15 @@
 do ($ = jQuery) ->
-  $.fn.textSearch = (string, callback) ->
+  $.fn.textSearch = (query) ->
 
-    #check string
-    s = $.trim string
-    .replace /\+/g, ' '
-    .replace /\s+/g, ' '
+    q = $.trim(query.replace(/\+/g, ' ').replace(/\s+/g, ' ')).split ' '
 
-    if !s
+    if !q?.length
       return
 
-    #make list
-    list = s.split ' '
-
-    #each
     @each ->
       e = $ @
-      html = e.html()
-      #delete all notes of html
-      .replace /<!--[\s\S]*?-->/g, ''
+
+      html = e.html().replace /<!--[\s\S]*?-->/g, '' #delete all notes
 
       #reset
       e.find 'span.mark'
@@ -25,18 +17,9 @@ do ($ = jQuery) ->
         elem = $ @
         elem.replaceWith elem.text()
 
-      #for
-      for a in list
-        reg = new RegExp '(>[^<"\']*?)' + a + '([^>"\']*?<)', 'g'
+      for a in q
+        reg = new RegExp '(>[^<"\']*?)(' + a + ')([^>"\']*?<)', 'gi'
         if reg.test html
-          html = html
-          .replace reg, '$1<span class="mark">' + a + '</span>$2'
+          html = html.replace reg, '$1<span class="mark">$2</span>$3'
 
-      #rewrite
       e.html html
-
-    #callback
-    callback?()
-
-    #return
-    @
