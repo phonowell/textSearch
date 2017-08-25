@@ -8,7 +8,7 @@ $('#content').textSearch('keywordA keywordB');
 
 ## Update
 
-### v0.0.4 @ 8/25/2017
+### v0.0.4 @ 08/25/2017
 
 - Project updated.
 
