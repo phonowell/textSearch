@@ -1,0 +1,27 @@
+{
+  "name": "textSearch",
+  "version": "0.0.4",
+  "description": "A little helper to make gulpfiles simple.",
+  "main": "./index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phonowell/textSearch.git"
+  },
+  "keywords": [
+    "textSearch"
+  ],
+  "author": "Mimiko Phonowell <phonowell@gmail.com>",
+  "license": "GPL-3.0+",
+  "url": "https://github.com/phonowell/textSearch",
+  "bugs": {
+    "url": "https://github.com/phonowell/textSearch/issues"
+  },
+  "homepage": "https://github.com/phonowell/textSearch",
+  "devDependencies": {
+    "fire-keeper": "0.0.60"
+  },
+  "dependencies": {}
+}
